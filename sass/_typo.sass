@@ -1,0 +1,237 @@
++font-face("Geomanist", font-files("geomanist-regular-webfont.woff"), normal, normal)
+
++font-face("Geomanist", font-files("geomanist-bold-webfont.woff"), bold, bold)
+
++font-face("icomoon", font-files("icons/icomoon.eot?dnb278", "icons/icomoon.woff?dnb278", "icons/icomoon.ttf?dnb278", "icons/icomoon.svg?dnb278"), normal, normal)
+
+
+$base-font-size: 16px
+$base-line-height: 24px
+$rhythm-unit: "rem"
++establish-baseline
+
+
+
+body
+    font-family: 'Geomanist', sans-serif
+    font-weight: 400
+    text-rendering: optimizelegibility
+    color: $font_base
+
+h1, h2, h3, p, a
+    margin-bottom: 0.5rem
+    margin-top: 0.2rem
+
+h2, h3, h4, h5, label
+    font-family: 'PT Serif', serif
+    
+h1, h2, h3
+    text-align: center
+    font-weight: 700
+    
+h1
+    color: #5cb5e6
+    text-transform: uppercase
+    span
+        color: #f47a38
+    font-weight: bold
+    font-size: 4rem
+    line-height: 6.4rem
+    letter-spacing: 0.4rem
+    
+h2
+    +text-shadow(0 0 8px $bg)
+    +adjust-font-size-to(4rem)
+    strong
+        color: $text_darker
+    +breakpoint($mobile)
+        +adjust-font-size-to(2rem)
+    +breakpoint($tablet)
+        +adjust-font-size-to(4rem)
+
+h3
+    +adjust-font-size-to(3rem)
+    color: $base_colors
+
+h4
+    +rhythm(0, 0.5, 0.5, 0, 1.3rem)
+    +adjust-font-size-to(1.3rem)
+    display: table
+    color: $base_colors
+    font-weight: 700
+p
+    strong
+        font-weight: 700 
+%icon
+    font-family: 'icomoon'
+    speak: none
+    font-style: normal
+    font-weight: normal
+    font-variant: normal
+    text-transform: none
+    line-height: 1
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+    border: none
+    border-bottom: 4px dotted $text_evidence
+    width: 80%
+    text-align: center
+    margin-bottom: 3rem
+    &:after
+        display: inline-block
+        position: relative
+        top: 1.8rem
+        padding: 0.8rem 0.8rem
+        font-size: 2rem
+
+section ul
+    list-style-type: disc 
+    list-style-position: inside 
+    padding-left: 1rem     
+
+.icon-whoare
+    @extend %icon
+    +breakpoint($mobile)
+        margin-bottom: 0.8rem
+    &:after
+        content: "\e040"
+        background-color: $bg
+        +box-shadow(0 0 0 5px $bg)
+        color: $text_evidence
+
+.icon-service
+    @extend %icon
+    &:after
+        content: "\e02b"
+        background-color: #fff
+        +box-shadow(0 0 0 5px #fff)
+        color: $text_evidence
+
+.icon-contact
+    @extend %icon
+    border-color: $text_darker
+    &:after
+        content: "\e02e"
+        background-color: $second_color
+        +box-shadow(0 0 0 5px $second_color)
+        color: $text_darker
+
+%service
+    &:before
+        display: table-cell
+        vertical-align: middle
+        font-family: 'icomoon'
+        speak: none
+        +breakpoint($mobile)
+            font-size: 1.4rem
+        +breakpoint($standard)
+            font-size: 2rem
+        font-style: normal
+        font-weight: normal
+        font-variant: normal
+        text-transform: none
+        line-height: 1.5rem
+        padding: 0 1rem 0 0.5rem 
+        color: $text_evidence
+        /* Better Font Rendering =========== */
+        -webkit-font-smoothing: antialiased
+        -moz-osx-font-smoothing: grayscale
+
+.icon-assistance:before
+    @extend %service
+    content: "\e034"
+
+.icon-sell:before
+    @extend %service
+    content: "\e002"
+
+.icon-office:before
+    @extend %service
+    content: "\e013"
+
+.icon-toner:before
+    @extend %service
+    content: "\e601"
+
+.icon-smart:before
+    @extend %service
+    content: "\e000"
+
+.icon-web:before
+    @extend %service
+    content: "\e00c"
+
+.icon-data:before
+    @extend %service
+    content: "\e602"
+
+.icon-graph:before
+    @extend %service
+    content: "\e033"
+
+.icon-tanslate:before
+    @extend %service
+    content: "\e600"
+
+%bar-icons
+    &:before
+        +transition(all, 0.5s, ease-in-out)
+        text-align: center
+        position: absolute
+        padding: 0 0 8px 0
+        bottom: 1rem
+        box-sizing: border-box
+        color: $base_colors
+        border-bottom: 2px solid transparent
+    &:hover
+        &::before
+            color: $base_colors
+            border-bottom-color: $base_colors
+
+        
+
+$icons: assistance sell office toner smart web data graph 
+$count: 2%
+@each $a in $icons
+    article
+        .icon-#{$a}
+            @extend %bar-icons
+            &:before
+                left: $count
+                $count: $count + 11.5%
+
+article .icon-assistance:before
+    +breakpoint($mobile) 
+        left: 0.5rem
+    +breakpoint($standard)
+        left: 1rem
+article .icon-data:before
+    +breakpoint($mobile) 
+        left: 73%
+
+article .icon-tanslate
+    @extend %bar-icons
+    +breakpoint($mobile) 
+        &:before   
+            right: 0.5rem
+    +breakpoint($standard) 
+        &:before   
+            right: 1rem
+
+.icon-tel, .icon-mail
+    &:before
+        @extend %service
+        display: inline
+        font-size: 1.4rem
+        color: $bg
+
+.icon-mail:before   
+    content: "\e028" 
+
+.icon-tel:before   
+    content: "\e004" 
+
+label
+    color: $base_colors

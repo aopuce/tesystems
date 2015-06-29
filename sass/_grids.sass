@@ -1,0 +1,199 @@
+// Requirements
+// ============
+@import "compass/layout/stretching"
+@import susy
++global-reset
+
+$susy: (columns: 12, gutter: 1/4, math: fluid, output: float, gutter-position: split)
+$hdpi: min-resolution 1.5dppx
+$mobile: 320px
+$tablet: 760px
+$standard: 940px
+$xl: 1280px
+$xxl: 1440px
+$xxxl: 1640px
+$landscape: (orientation landscape)
+$handlandscape: screen 1280px, handheld (orientation landscape)
+
+
+html,body,header
+    height: 100%
+    width: 100%
+img
+    width: 100%
+
+header
+    display: table
+    margin: -51px 0 51px 0
+
+.table-cell
+    display: table-cell
+    vertical-align: middle
+
+section
+    +breakpoint ($mobile)
+        +container(98%)
+        padding-bottom: 2rem
+    +breakpoint ($tablet)
+        +container(90%)
+    +breakpoint ($xxl)
+        +container(80%)
+
+.container
+    +breakpoint ($mobile)
+        +container(95%)
+        padding-bottom: 2rem
+    +breakpoint ($tablet)
+        +breakpoint($landscape)
+            +container(80%)
+    +breakpoint ($xxl)
+        +container(50%)
+
+.clearfix
+    +clearfix
+
+
+.icon-scroll 
+    position: absolute
+    bottom: 0
+    left: 50%
+    margin-left: -13px 
+    width: 26px
+    a
+        display: block
+        object
+            pointer-events: none
+
+
+/* .logo
+    +breakpoint ($mobile)
+        display: block
+        width: 300px
+        min-height: 145px
+        background: url(../images/logo.png) no-repeat
+        background-size: 100%
+        text-indent: -99999px
+        margin: 0 auto 1rem auto
+        +breakpoint ($hdpi)
+            background: url(../images/logo@2x.png) 
+            background-size: 100%
+    +breakpoint ($tablet) 
+        width: 692px
+        min-height: 336px
+        margin: 0 auto 3rem auto
+
+        +breakpoint ($hdpi)
+            background: url(../images/logo@2x.png) 
+            background-size: 100%
+             */
+
+.logo
+    display: block
+    margin: 0 auto
+    object
+        display: block
+        width: 110px
+        margin: 0 auto
+
+.col-litle
+    +breakpoint ($mobile)
+        +span (12)
+        .col-1
+            +span (12 of 12)
+        .col-2
+            +span (12 of 12)
+        article.col-2
+            position: relative
+            width: inherit
+            padding-bottom: 4rem
+    +breakpoint($tablet)
+        +breakpoint($landscape)
+            +span(10)
+            +push(1)
+    +breakpoint ($xl)
+        .col-2, article.col-2
+            +span(last 6)
+    +breakpoint ($handlandscape)
+        +span (12)
+        .col-1
+            +span (6)
+    +breakpoint($xxxl)
+        +span(10)
+        +push(1)
+        +pre(1)
+
+
+        
+
+.service
+    +breakpoint ($mobile)   
+        +span (12 of 12)
+        margin-bottom: 3rem
+        position: relative
+        p
+            margin: 0 1rem 1rem
+    +breakpoint ($standard) 
+        +span (6 of 12)
+    +breakpoint ($xxl) 
+        +span (4)
+    +breakpoint ($xxxl)
+        +span (3)
+
+hr
+    margin-top: -2rem
+
+label, input, textarea
+    width: 100%
+    margin: 0 0 1rem 0
+    border: none
+
+#captcha
+    width: 304px
+    +breakpoint($mobile)
+        margin: 0 auto 1rem auto
+        float: none
+    +breakpoint($standard)
+        margin: 0 0 1rem 0
+        float: left
+
+label
+    display: block
+    margin: 0
+    
+textarea
+    resize: none
+    height: 11.4rem
+
+input
+    height: 2.5rem
+
+input[type=submit]
+    display: block
+    height: 75px
+    +breakpoint($mobile)
+        width: 100%
+        float: none
+    +breakpoint($standard)
+        width: 47%
+        float: right
+    +breakpoint($handlandscape)
+        width: 35%
+    +breakpoint($xxl)
+        width: 30%
+
+
+footer
+    +clearfix
+    .spanfoot
+        +breakpoint($mobile)
+            +span (12)
+            text-align: center
+            +breakpoint($landscape)
+                +span (6)
+        +breakpoint($tablet)
+            +span (6)
+            +breakpoint($landscape)
+                +span(3)
+                text-align: left
+    .container
+        padding: 2rem 0 0 0
